@@ -7,69 +7,94 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f0e6ef;
+            background-color: #f2f2f2;
+            color: #333;
             text-align: center;
-            padding: 50px;
+            padding: 100px;
         }
 
         h1 {
-            color: #8e44ad;
+            font-size: 40px;
+            margin-bottom: 20px;
         }
 
-        .container {
-            margin-top: 100px;
-        }
-
-        button {
+        .button {
             padding: 15px 30px;
-            font-size: 18px;
-            margin: 20px;
-            border: none;
-            border-radius: 10px;
+            font-size: 24px;
             cursor: pointer;
-            transition: 0.3s;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            transition: transform 0.2s ease;
         }
 
-        #si {
-            background-color: #2ecc71;
+        #noButton {
+            background-color: #e74c3c; /* Color rojo para el botón "No" */
             color: white;
         }
 
-        #no {
-            background-color: #e74c3c;
+        #yesButton {
+            background-color: #2ecc71; /* Color verde para el botón "Sí" */
             color: white;
+        }
+
+        @keyframes heart {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Estilo del corazón que aparecerá al hacer clic en "Sí" */
+        #heart {
+            display: none;
             position: absolute;
-        }
-
-        button:hover {
-            transform: scale(1.1);
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 100px;
+            color: #e74c3c;
+            animation: heart 1s forwards;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>¿Te gusto? ¿Estás a gusto conmigo?</h1>
-        <button id="si" onclick="redirectToYes()">Sí</button>
-        <button id="no">No</button>
-    </div>
+    <h1>¿Te gusto?</h1>
+    <button class="button" id="noButton">No</button>
+    <button class="button" id="yesButton">Sí</button>
+    <div id="heart">❤️</div>
 
     <script>
-        const noButton = document.getElementById('no');
-        const siButton = document.getElementById('si');
+        const noButton = document.getElementById('noButton');
+        const yesButton = document.getElementById('yesButton');
+        const heart = document.getElementById('heart');
 
-        // Función para redirigir al hacer clic en el botón "Sí"
-        function redirectToYes() {
-            window.location.href = "you_have_been_hacked.html";
-        }
-
-        // Función para mover el botón "No" cuando el cursor se acerca
-        noButton.onmouseover = function() {
+        // Mover el botón "No" aleatoriamente
+        noButton.addEventListener('mouseover', () => {
             const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
             const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
-            noButton.style.left = x + 'px';
-            noButton.style.top = y + 'px';
-        };
+            noButton.style.position = 'absolute';
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+        });
+
+        // Acción al pulsar el botón "Sí"
+        yesButton.addEventListener('click', () => {
+            heart.style.display = 'block'; // Mostrar el corazón
+            setTimeout(() => {
+                // Redirigir después de la animación
+                window.location.href = 'you_have_been_hacked.html';
+            }, 1000); // Esperar 1 segundo para redirigir
+        });
     </script>
 
 </body>
