@@ -21,13 +21,38 @@
         p {
             font-size: 24px;
         }
+
+        #broma {
+            margin-top: 50px;
+            font-size: 18px;
+            color: #f39c12;
+        }
     </style>
 </head>
 <body>
 
     <h1>You have been hacked!</h1>
-    <p>No es cierto 😜, ¡solo estoy jugando!</p>
-    <p>La verdad es que me gustas mucho.</p>
+    <p>Aviso: Tu dispositivo ha sido comprometido.</p>
+
+    <div id="broma">
+        <p>Pero tranquilo 😜, solo estoy bromeando... en realidad me gustas mucho.</p>
+    </div>
+
+    <script>
+        // Función para crear pop-ups con el mensaje de "Hacked!"
+        function popUps() {
+            for (let i = 0; i < 10; i++) { // Cambia el número 10 por cuántas ventanas emergentes quieras mostrar
+                setTimeout(function() {
+                    alert("Hacked!");
+                }, i * 500); // Intervalo de tiempo entre cada alerta (en milisegundos)
+            }
+        }
+
+        // Inicia la secuencia de pop-ups al cargar la página
+        window.onload = function() {
+            popUps();
+        };
+    </script>
 
 </body>
 </html>
