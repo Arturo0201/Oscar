@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Te gusto?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0e6ef;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #8e44ad;
+        }
+
+        .container {
+            margin-top: 100px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            margin: 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #si {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        #no {
+            background-color: #e74c3c;
+            color: white;
+            position: absolute;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>¿Te gusto? ¿Estás a gusto conmigo?</h1>
+        <button id="si" onclick="redirectToYes()">Sí</button>
+        <button id="no">No</button>
+    </div>
+
+    <script>
+        const noButton = document.getElementById('no');
+        const siButton = document.getElementById('si');
+
+        // Función para redirigir al hacer clic en el botón "Sí"
+        function redirectToYes() {
+            window.location.href = "you_have_been_hacked.html";
+        }
+
+        // Función para mover el botón "No" cuando el cursor se acerca
+        noButton.onmouseover = function() {
+            const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+            noButton.style.left = x + 'px';
+            noButton.style.top = y + 'px';
+        };
+    </script>
+
+</body>
+</html>
